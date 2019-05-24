@@ -151,7 +151,7 @@ exports.inspectOpts = Object.keys(process.env).filter(key => {
 function useColors() {
 	return 'colors' in exports.inspectOpts ?
 		Boolean(exports.inspectOpts.colors) :
-		tty.isatty(process.stderr.fd);
+		tty.isatty(process.stdout.fd);
 }
 
 /**
@@ -187,7 +187,7 @@ function getDate() {
  */
 
 function log(...args) {
-	return process.stderr.write(util.format(...args) + '\n');
+	return process.stdout.write(util.format(...args) + '\n');
 }
 
 /**
